@@ -1,44 +1,54 @@
-class ContaController {
+class ClienteController {
+/*
+* 3. Alterar o arquivo app.ts para criar um objeto da classe Clientes e inserir clientes dentro, listar, remover e pesquisar (pode fazer o código diretamente no app.ts e imprimir no console o resultado)
+4. Criar o html clientes.html, que terá os inputs para acrescentar para inserir um novo cliente, e inserirá as referências para os arquivos .js necessários
+5. Desenvolver a classe ClienteController, que fará a ponte entre a tela e as ações que podem ser feitas em clientes
+6. Desenvolver a classe ClienteEspecial, que herda de Cliente e tem uma lista de dependentes (array de Cliente) (mas a tela de Cliente não precisa pensar em colocar os dependentes, apenas um cliente básico)
 
-    private inputNumero: HTMLInputElement;
-    private inputSaldo: HTMLInputElement;
-
-    private contas: Contas;
+*
+*
+*
+* */
+    private inputNome: HTMLInputElement;
+    private inputCpf: HTMLInputElement;
+    private inputNumeroConta: HTMLInputElement;
+    private inputSaldoConta: HTMLInputElement;
+    private clientes: Clientes;
 
     constructor() {
-        this.inputNumero =
-            <HTMLInputElement>document.querySelector("#conta")
-        this.inputSaldo =
-            <HTMLInputElement>document.querySelector("#saldo");
-        this.contas = new Contas();
+        this.inputNome = <HTMLInputElement>document.querySelector("#nome");
+        this.inputCpf = <HTMLInputElement>document.querySelector("#cpf");
+        this.inputNumeroConta = <HTMLInputElement>document.querySelector("#numConta");
+        this.inputSaldoConta = <HTMLInputElement>document.querySelector("#SaldoConta");
+        this.clientes = new Clientes();
     }
 
     inserir(evento: Event) {
         evento.preventDefault();
-        let novaConta = new Conta(this.inputNumero.value,
-            parseFloat(this.inputSaldo.value));
+        let novoCliente = new Cliente(this.inputNome.value,
+            this.inputCpf.value,new Conta(this.inputNumeroConta.value,parseFloat(this.inputSaldoConta.value)));
 
-        this.contas.inserir(novaConta);
-        this.inserirContaNoHTML(novaConta);
+        this.clientes.inserir(novoCliente);
+        this.inserirClienteNoHTML(novoCliente);
     }
 
     listar() {
-        this.contas.listar().forEach(
-            conta => {
-                this.inserirContaNoHTML(conta);
+        this.clientes.listar().forEach(
+            cliente => {
+                this.inserirClienteNoHTML(cliente);
             }
         );
     }
 
-    inserirContaNoHTML(conta: Conta) {
+    inserirClienteNoHTML(cliente: Cliente) {
         const elementoP = document.createElement('p');
-        elementoP.textContent = conta.toString();
+        elementoP.textContent = cliente.toString();
         const botaoApagar = document.createElement('button');
         botaoApagar.textContent = 'X';
         botaoApagar.addEventListener('click',
             (event) => {
-                console.log('removendo conta ' + conta.toString());
-                this.contas.remover(conta.numero);
+                console.log('removendo cliente ' + cliente.toString());
+                this.clientes.remover(cliente.cpf);
                 (<Element>event.target).parentElement.remove();
             }
         );

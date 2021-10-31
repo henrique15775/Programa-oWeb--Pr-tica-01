@@ -25,7 +25,7 @@ class Clientes {
 
     pesquisar(numero: string): Cliente {
         return this.clientes.find(
-            cliente => cliente.cpf === numero
+            cliente => cliente.cpf == numero
         );
     }
 
