@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "target": "es2016",
+    "outDir": "app/js",
+    "noEmitOnError": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "app/ts/**/*"
+  ]
+}
