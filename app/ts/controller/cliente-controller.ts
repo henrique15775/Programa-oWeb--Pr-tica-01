@@ -25,6 +25,7 @@ class ClienteController {
 
     inserir(evento: Event) {
         evento.preventDefault();
+        if(this.clientes.pesquisar(this.inputCpf.value)){throw Error}
         let novoCliente = new Cliente(this.inputNome.value,
             this.inputCpf.value,new Conta(this.inputNumeroConta.value,parseFloat(this.inputSaldoConta.value)));
 

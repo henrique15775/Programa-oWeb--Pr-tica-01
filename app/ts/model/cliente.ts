@@ -28,6 +28,9 @@ class Cliente {
         this._cpf = cpf;
     }
 
+    toString(){
+        return `Nome: ${this.nome} || CPF:${this.cpf} || Conta: ${this._conta.numero}`;
+    }
 
 }
 
