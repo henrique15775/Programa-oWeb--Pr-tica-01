@@ -1,6 +1,5 @@
-//let contaController = new ContaController();
+
 let clienteController = new ClienteController();
-//contaController.listar();
 
 clienteController.listar();
 const c1 = new Conta('1', 100);
@@ -44,12 +43,3 @@ const cliente_especial = new ClienteEspecial(cliente1.nome,cliente1.cpf,c1,array
 
 
 console.log(cliente_especial.toString());
-/*
-console.log('Conta: ' + c1.saldo);
-
-p1.atualizarSaldoAniversario();
-console.log('Poupanca: ' + p1.saldo);
-
-cb1.creditar(100);
-console.log('Conta Bonificada: ' + cb1.saldo);
-*/
